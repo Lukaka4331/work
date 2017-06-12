@@ -22,7 +22,7 @@ public class MainFrame extends Frame  implements ActionListener{
 
 	private Label lab1=new Label  ("中英文打字系統");
 	private Label lab2=new Label  ("60");
-	private Label lab3=new Label  ("算算你打了幾個字");
+	private Label lab3=new Label  ("算算你打了0個字");
 	private Label lab4=new Label  ("錯了幾個字");
 	
 
@@ -30,8 +30,7 @@ public class MainFrame extends Frame  implements ActionListener{
 	private Panel pn2=new Panel();
   
      
-    private TextArea ta=new TextArea();	
-    private TextArea input=new TextArea();	
+    private Label ta=new Label();	
     private TextField tf=new TextField();
     private int tfCount =0;
 	private Timer tmr;
@@ -56,9 +55,9 @@ public class MainFrame extends Frame  implements ActionListener{
 			 }
 		 });
 		 
-         this.setBounds(650, 250, 800, 800);
+         this.setBounds(650, 250, 915, 800);
 		 this.setLayout(new BorderLayout(5,5));
-		 
+		 ta.setFont(new Font("標楷體", Font.BOLD, 15));
 		 ta.setBackground(Color.CYAN);
 		 lab1.setAlignment(Label.CENTER);
 		 lab2.setAlignment(Label.CENTER);
@@ -148,14 +147,15 @@ public class MainFrame extends Frame  implements ActionListener{
 
 		 tf.addKeyListener(new KeyAdapter(){
 			 public void keyTyped(KeyEvent ke){
-				 if(ke.getKeyChar()==8 && tfCount>0){
-					 tfCount--;
+			 if(ke.getKeyChar()==8 && tfCount>0){
+				 tfCount--;
 				 }else if(ke.getKeyChar()!=8){
-					 tfCount++;
-				 }
-				 lab3.setText("你已經打了"+tfCount+"個字");
+				 tfCount++;
+			 }
+			 lab3.setText("算算你打了"+tfCount+"個字");
 			 }
 		 });
+				
     
     
     
@@ -166,11 +166,12 @@ public class MainFrame extends Frame  implements ActionListener{
 		char[]v1 = (ta.getText()).toCharArray();
 		char[]v2 = (tf.getText()).toCharArray();
 		for(int i = 0;i<v2.length;i++){
+			
 			if(v1[i]!=v2[i]){
 				IT++;
 			}
 		}	
-	    	lab4.setText(IT+(v1.length-v2.length)+"");		
+	    	lab4.setText("錯了"+(IT+(v1.length-v2.length))+"幾個字");		
 };
 });
 	}
@@ -204,7 +205,7 @@ public class MainFrame extends Frame  implements ActionListener{
 				int v2 = rnd.nextInt(4)+1;
 				switch(v2){
 				case 1:
-					s1 = "ForstudentsatoneelementaryschoolgoingtoclassmeanstakingbookspencilsandpassportsRtyuugesl";
+					s1 = "For student satoneelementaryschoolgoingtoclassmeanstakingbookspencilsandpassportsRtyuugesl";
 					break;
 				case 2:
 					s1 = "JimmyKimmelandTrevorNoahmockedPresidentTrumpsdecisiontowithdrawfromtheParisClimateAccord";
