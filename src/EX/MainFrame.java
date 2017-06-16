@@ -1,5 +1,4 @@
 package EX;
-
 import java.awt.*;
 import java.util.Random;
 import java.awt.*;
@@ -20,7 +19,7 @@ public class MainFrame extends Frame  implements ActionListener{
 	private JButton b5=new JButton ("判斷");
 
 	private JLabel lab1=new JLabel  ("中英文打字系統",SwingConstants.CENTER);
-	private JLabel lab2=new JLabel  ("60",SwingConstants.CENTER);
+	private JTextField lab2=new JTextField  ("60",SwingConstants.CENTER);
 	private JLabel lab3=new JLabel  ("目前還沒有輸入",SwingConstants.CENTER);
 	private JLabel lab4=new JLabel  (" ",SwingConstants.CENTER);
 	
@@ -105,45 +104,37 @@ public class MainFrame extends Frame  implements ActionListener{
         	 
          });
     
-         
-//         comebox.addItemListener(new ItemListener(){
-//
-//			@Override
-//			public void itemStateChanged(ItemEvent e) {
-//				// TODO Auto-generated method stub
-//				ta.setText(fun2());
-//				System.out.println("2");
-//			}
-//        	 
-//         });
-         
-         
-         
-              
-         
+      
 		 b3.addActionListener(new ActionListener(){		 
 			public void actionPerformed(ActionEvent ae) {
-				//for(int i=60;i>=0;i--){ 
-				//	try { 
-					//每次停一秒鐘 
-					//Thread.sleep(1000); 						
-					//} catch (Exception e1) {} 	 									
-					//lab2.setText("倒數"+i+"秒"); 
-					//} 
+			
 				tf.setEnabled(true);
-
 				b3.setEnabled(false);		
 				Timer tmr=new Timer();
 				tmr.schedule(new  TimerTask(){
-                int i=60;
+			 int i=60;
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						if(i>=0){
+						if(i==0){
+							tf.setEnabled(false);//關按鈕
+							int IH = 0;
+							char[]v1 = (ta.getText()).toCharArray();//將文字拉入陣列
+							char[]v2 = (tf.getText()).toCharArray();
+							
+							for(int n = 0;n<v2.length;n++){ //文字判斷
+								if(v1[n]!=v2[n]){
+									IH++;
+								}
+							}	
+						    	lab4.setText("錯了"+(IH+(v1.length-v2.length))+"幾個字");	//回傳數值	
+					};
+								
+						 if(i>=0){
 							lab2.setText(Integer.toString(i--));
-						
+				
 					}}}, 1000,1000);
-
+				
 				b3.setEnabled(false);			
 
 				if(comebox.getSelectedItem().equals("中文")){
@@ -155,12 +146,15 @@ public class MainFrame extends Frame  implements ActionListener{
 		 });
 		 b4.addActionListener(new ActionListener(){		 
 				public void actionPerformed(ActionEvent ae) {
+					
 					b3.setEnabled(true);
 					lab4.setText(" ");
 					lab3.setText("目前還沒輸入");
 					tf.setEnabled(true);//開按鈕
 					ta.setText("");
 					tf.setText("");
+					 
+					lab2.setText(" ");
 				}
 		 });
 		 tf.addKeyListener(new KeyAdapter(){ 
@@ -182,6 +176,7 @@ public class MainFrame extends Frame  implements ActionListener{
     b5.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent aw){
 		tf.setEnabled(false);//關按鈕
+		
 		int IT = 0;
 		char[]v1 = (ta.getText()).toCharArray();//將文字拉入陣列
 		char[]v2 = (tf.getText()).toCharArray();
