@@ -21,8 +21,8 @@ public class MainFrame extends Frame  implements ActionListener{
 
 	private JLabel lab1=new JLabel  ("中英文打字系統",SwingConstants.CENTER);
 	private JLabel lab2=new JLabel  ("60",SwingConstants.CENTER);
-	private JLabel lab3=new JLabel  ("你打了0個字",SwingConstants.CENTER);
-	private JLabel lab4=new JLabel  ("錯了幾個字",SwingConstants.CENTER);
+	private JLabel lab3=new JLabel  ("目前還沒有輸入",SwingConstants.CENTER);
+	private JLabel lab4=new JLabel  (" ",SwingConstants.CENTER);
 	
 
 	private Panel pn1=new Panel();
@@ -55,7 +55,7 @@ public class MainFrame extends Frame  implements ActionListener{
 			 }
 		 });
 		 
-         this.setBounds(650, 250, 915, 800);
+         this.setBounds(550, 50, 915, 900);
 		 this.setLayout(new BorderLayout(5,5));
 		 lab1.setFont(new Font("標楷體", Font.BOLD, 20));
 		 ta.setFont(ss);lab3.setFont(ss); lab4.setFont(ss);lab2.setFont(ss);tf.setFont(ss);
@@ -100,7 +100,7 @@ public class MainFrame extends Frame  implements ActionListener{
 			public void itemStateChanged(ItemEvent arg0) {
 				// TODO Auto-generated method stub
 				
-				System.out.println("1");
+				
 			}
         	 
          });
@@ -142,8 +142,8 @@ public class MainFrame extends Frame  implements ActionListener{
 		 b4.addActionListener(new ActionListener(){		 
 				public void actionPerformed(ActionEvent ae) {
 					b3.setEnabled(true);
-					lab4.setText("錯了0幾個字");
-					lab3.setText("錯了幾個字");
+					lab4.setText(" ");
+					lab3.setText("目前還沒輸入");
 					tf.setEnabled(true);//開按鈕
 					ta.setText("");
 					tf.setText("");
@@ -189,7 +189,7 @@ public class MainFrame extends Frame  implements ActionListener{
 		private String fun1(){
      		Random rnd = new Random();
      		String s  = null;
-     		int v1 = rnd.nextInt(4)+1;
+     		int v1 = rnd.nextInt(7)+1;
      		switch(v1){
      		case 1:
      			 s = "露濃煙重草萋萋樹映闌干柳拂堤一院落花無客醉五更殘月有鶯啼芳筵想像情難盡故榭荒涼路已迷惆悵羸驂往來慣每經門巷亦長嘶";
@@ -202,6 +202,15 @@ public class MainFrame extends Frame  implements ActionListener{
      		break;
      		case 4:
      			 s = "西蜀櫻桃也自紅野人相贈滿筠籠數回細寫愁仍破萬顆勻圓訝許同憶昨賜沾門下省退朝擎出大明宮金盤玉箸無消息此日嘗新任轉蓬";
+     		break;
+     		case 5:
+     			 s = "燕台一去客心惊笳鼓喧喧漢將營万里寒光生積雪三邊曙色動危旌沙場烽火侵胡月海畔云山擁薊城少小雖非投筆吏論功還欲請長纓";
+     		break;
+     		case 6:
+     			 s = "漢文皇帝有高台此日登臨曙色開三晉云山皆北向二陵風雨自東來關門令尹誰能識河上仙翁去不回且欲近尋彭澤宰陶然共醉菊花杯";
+     		break;
+     		case 7:
+     			 s = "鳳凰台上鳳凰游鳳去台空江自流吳宮花草埋幽徑晉代衣冠成古丘三山半落青天外二水中分白鷺洲總為浮云能蔽日長安不見使人愁";
      		}
      		return s;
       }
@@ -213,7 +222,7 @@ public class MainFrame extends Frame  implements ActionListener{
 				int v2 = rnd.nextInt(4)+1;
 				switch(v2){
 				case 1:
-					s1 = "His breakthrough major title at the 2016 US Open paved the way for a streak which has yielded five more wins,including three this season,and catapulted him to world No.1";
+					s1 = "His breakthrough major title at the 2016 US Open paved the way for a streak which has yielded five more wins,including three this season,and catapulted him to world No1";
 					break;
 				case 2:
 					s1 = "The medieval era took the model of masculinity back towards basic,chivalric,Christian values,before the likes of Byron and Brummell shattered these ideas with the rise of the dandy";
@@ -224,6 +233,11 @@ public class MainFrame extends Frame  implements ActionListener{
 				case 4:
 					s1 = "His amazing life has now become the subject of an international book,published by Bloomsbury and endorsed by King Abdullah II of Jordan and British adventurer Ranulph Fiennes";
 					break;
+				case 5:
+					 s1 = "Richard Bland,Save the Children national director of policy,advocacy and development,was most surprised by the country low ranking and its position between Bosnia and Russia";
+					 break;
+				case 6:
+					 s1 = "But while most nutritionists recommend whole wheat bread over white bread,one new study suggests that the type of bread that is best for you may have more to do with your own body than the bread itself";
 				}
 				return s1;
 			}
