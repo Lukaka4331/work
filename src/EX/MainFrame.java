@@ -32,6 +32,9 @@ public class MainFrame extends Frame  implements ActionListener{
     private JTextArea ta=new JTextArea();	
     private JTextField tf=new JTextField();
     private int tfCount =0;
+
+	private Timer tmr;
+
     private Font ss = new Font("標楷體", Font.BOLD, 20);
    
     public MainFrame(){
@@ -128,6 +131,7 @@ public class MainFrame extends Frame  implements ActionListener{
 					//lab2.setText("倒數"+i+"秒"); 
 					//} 
 				tf.setEnabled(true);
+
 				b3.setEnabled(false);		
 				Timer tmr=new Timer();
 				tmr.schedule(new  TimerTask(){
@@ -139,6 +143,9 @@ public class MainFrame extends Frame  implements ActionListener{
 							lab2.setText(Integer.toString(i--));
 						
 					}}}, 1000,1000);
+
+				b3.setEnabled(false);			
+
 				if(comebox.getSelectedItem().equals("中文")){
 					ta.setText(fun1());
 				}else{
