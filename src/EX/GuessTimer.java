@@ -5,67 +5,25 @@ import java.util.Timer;
 
 import java.util.TimerTask;
 
- 
-
-/**
-
- * 計時器，可倒數秒數顯示，並可傾聽逾時事件
-
- * @author Ray(java吉他手)
-
- *
-
- */
-
 public class GuessTimer{
 
  public interface Listener{
-
- //通知時間到
-
  public void timeOut();
-
- //秒數變動秒數
-
  public void onChange(long sec);
-
  }
-
  private Listener lis;
-
  private Timer timer;
-
  private JLabel timeLab;
-
  private long delay;
-
  private long sec;
-
- 
-
  public GuessTimer() {
-
  delay = 1;
-
  }
-
- 
-
  public void setJLabel(JLabel lab){
 
  timeLab = lab;
 
  }
-
- 
-
- /**
-
-  * 設定傾聽timer事件
-
-  * @param li
-
-  */
 
  public void addListener(Listener li){
 
@@ -81,15 +39,6 @@ public class GuessTimer{
 
  }
 
- 
-
- /**
-
-  * 啟動TIMER
-
-  * @param s
-
-  */
 
  public void startTimer(int s){
 
@@ -128,13 +77,9 @@ public class GuessTimer{
  if(lis != null){
 
  lis.timeOut();
-
  }
-
  }
-
  }
-
  };
 
  

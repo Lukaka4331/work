@@ -12,75 +12,71 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainFrame extends Frame  implements ActionListener{
-	private Button b1=new Button ("¤¤¤å");
-	private Button b2=new Button ("­^¤å");
+	private JButton b1=new JButton ("ä¸­æ–‡");
+	private JButton b2=new JButton ("è‹±æ–‡");
 
+	private JButton b3=new JButton ("é–‹å§‹");
+	private JButton b4=new JButton ("é‡æ–°é–‹å§‹");
+	private JButton b5=new JButton ("åˆ¤æ–·");
 
-	private Button b3=new Button ("¶}©l");
-	private Button b4=new Button ("­«·s¶}©l");
-	private Button b5=new Button ("§PÂ_");
-
-	private Label lab1=new Label  ("¤¤­^¤å¥´¦r¨t²Î");
-	private Label lab2=new Label  ("60");
-	private Label lab3=new Label  ("ºâºâ§A¥´¤F´X­Ó¦r");
-	private Label lab4=new Label  ("¿ù¤F´X­Ó¦r");
+	private JLabel lab1=new JLabel  ("ä¸­è‹±æ–‡æ‰“å­—ç³»çµ±",SwingConstants.CENTER);
+	private JLabel lab2=new JLabel  ("60",SwingConstants.CENTER);
+	private JLabel lab3=new JLabel  ("ç›®å‰é‚„æ²’æœ‰è¼¸å…¥",SwingConstants.CENTER);
+	private JLabel lab4=new JLabel  (" ",SwingConstants.CENTER);
 	
 
 	private Panel pn1=new Panel();
 	private Panel pn2=new Panel();
-  
+    private Panel pn3=new Panel();
      
-    private TextArea ta=new TextArea();	
-    private TextArea input=new TextArea();	
-    private TextField tf=new TextField();
+    private JTextArea ta=new JTextArea();	
+    private JTextField tf=new JTextField();
     private int tfCount =0;
-	private Timer tmr;
-    
+    private Font ss = new Font("æ¨™æ¥·é«”", Font.BOLD, 20);
+   
     public MainFrame(){
 		 initComp();
-		 Timer tmr; 
-		 tmr = new Timer(); 
-		 this.tmr = tmr; 
+		
 		 
 			 }
     
     private void initComp(){
 		
-    	// «Å§iJComboBox
+    	// å®£å‘ŠJComboBox
     	JComboBox comebox = new JComboBox();
-    	// ¼W¥[¤º®e¨ìcomebox
-    			
+    	// å¢žåŠ å…§å®¹åˆ°comebox
+    	this.setTitle("ä¸­è‹±æ‰“ç·´ç¿’ç³»çµ±");	
 		 this.addWindowListener(new WindowAdapter(){
 			 public void windowClosing( WindowEvent e){
 				 System.exit(0);
 			 }
 		 });
 		 
-         this.setBounds(650, 250, 800, 800);
+         this.setBounds(550, 50, 915, 900);
 		 this.setLayout(new BorderLayout(5,5));
-		 
-		 ta.setBackground(Color.CYAN);
-		 lab1.setAlignment(Label.CENTER);
-		 lab2.setAlignment(Label.CENTER);
-		 lab3.setAlignment(Label.CENTER);
-		 lab4.setAlignment(Label.CENTER);
+		 lab1.setFont(new Font("æ¨™æ¥·é«”", Font.BOLD, 20));
+		 ta.setFont(ss);lab3.setFont(ss); lab4.setFont(ss);lab2.setFont(ss);tf.setFont(ss);
 		 
 		 lab1.setBackground(Color.PINK);
-         pn1.setLayout(new GridLayout(8,1,5,5));
-         pn2.setLayout(new GridLayout(2,1,3,3));
-
+		 lab1.setOpaque(true);
+		 ta.setBackground(Color.CYAN);
+		 ta.setOpaque(true);//é€æ˜Žåº¦
+		 ta.setLineWrap(true);//æ¿€æ´»è‡ªåŠ¨æ¢è¡ŒåŠŸèƒ½
+         pn1.setLayout(new GridLayout(1,0,0,0));
+         pn2.setLayout(new GridLayout(2,1,0,0));
+         pn3.setLayout(new GridLayout(2,1,1,0));
+         ta.setLayout(new GridLayout(2,1,2,25));
          pn1.add(lab1);
-         pn1.add(lab2);
-         
+         pn1.add(lab2);     
          pn1.add(comebox);
-        comebox.addItem("¤¤¤å");
-        comebox.addItem("­^¤å");
+        comebox.addItem("ä¸­æ–‡");
+        comebox.addItem("è‹±æ–‡");
 
 
          pn1.add(b3);
          pn1.add(b4);
-         pn1.add(lab4);
-         pn1.add(lab3);
+         pn3.add(lab3);
+         pn3.add(lab4);
          pn1.add(b5);
 
        
@@ -89,9 +85,9 @@ public class MainFrame extends Frame  implements ActionListener{
          pn2.add(tf);
          this.add(pn1,BorderLayout.NORTH);         
          this.add(pn2,BorderLayout.CENTER);
-      
-         
-         
+         this.add(pn3,BorderLayout.SOUTH); 
+         tf.setEnabled(false);
+         ta.setEditable(false);
 
 				
          
@@ -101,7 +97,7 @@ public class MainFrame extends Frame  implements ActionListener{
 			public void itemStateChanged(ItemEvent arg0) {
 				// TODO Auto-generated method stub
 				
-				System.out.println("1");
+				
 			}
         	 
          });
@@ -120,79 +116,108 @@ public class MainFrame extends Frame  implements ActionListener{
          
          
          
-         
-         
-         
+              
          
 		 b3.addActionListener(new ActionListener(){		 
 			public void actionPerformed(ActionEvent ae) {
 				//for(int i=60;i>=0;i--){ 
 				//	try { 
-					//¨C¦¸°±¤@¬íÄÁ 
+					//æ¯æ¬¡åœä¸€ç§’é˜ 
 					//Thread.sleep(1000); 						
 					//} catch (Exception e1) {} 	 									
-					//lab2.setText("­Ë¼Æ"+i+"¬í"); 
+					//lab2.setText("å€’æ•¸"+i+"ç§’"); 
 					//} 
-				
-				if(comebox.getSelectedItem().equals("¤¤¤å")){
+				tf.setEnabled(true);
+				b3.setEnabled(false);		
+				Timer tmr=new Timer();
+				tmr.schedule(new  TimerTask(){
+                int i=60;
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if(i>=0){
+							lab2.setText(Integer.toString(i--));
+						
+					}}}, 1000,1000);
+				if(comebox.getSelectedItem().equals("ä¸­æ–‡")){
 					ta.setText(fun1());
 				}else{
 					ta.setText(fun2());
-				}
-				
-			}
-
-			
-				
+				}			
+			}				
 		 });
-
-		 tf.addKeyListener(new KeyAdapter(){
+		 b4.addActionListener(new ActionListener(){		 
+				public void actionPerformed(ActionEvent ae) {
+					b3.setEnabled(true);
+					lab4.setText(" ");
+					lab3.setText("ç›®å‰é‚„æ²’è¼¸å…¥");
+					tf.setEnabled(true);//é–‹æŒ‰éˆ•
+					ta.setText("");
+					tf.setText("");
+				}
+		 });
+		 tf.addKeyListener(new KeyAdapter(){ 
 			 public void keyTyped(KeyEvent ke){
-				 if(ke.getKeyChar()==8 && tfCount>0){
-					 tfCount--;
+				
+			 if(ke.getKeyChar()==8 && tfCount>0){//åˆ¤æ–·ä½¿ç”¨è€…å­—æ•¸éƒ¨åˆ†
+				 tfCount--;
 				 }else if(ke.getKeyChar()!=8){
-					 tfCount++;
-				 }
-				 lab3.setText("§A¤w¸g¥´¤F"+tfCount+"­Ó¦r");
+				 tfCount++;
+			 }
+			 lab3.setText("ç®—ç®—ä½ æ‰“äº†"+tfCount+"å€‹å­—");
 			 }
 		 });
+				
     
     
     
     
     b5.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent aw){
+		tf.setEnabled(false);//é—œæŒ‰éˆ•
 		int IT = 0;
-		char[]v1 = (ta.getText()).toCharArray();
+		char[]v1 = (ta.getText()).toCharArray();//å°‡æ–‡å­—æ‹‰å…¥é™£åˆ—
 		char[]v2 = (tf.getText()).toCharArray();
-		for(int i = 0;i<v2.length;i++){
+		for(int i = 0;i<v2.length;i++){ //æ–‡å­—åˆ¤æ–·
+			
 			if(v1[i]!=v2[i]){
 				IT++;
 			}
 		}	
-	    	lab4.setText(IT+(v1.length-v2.length)+"");		
+	    	lab4.setText("éŒ¯äº†"+(IT+(v1.length-v2.length))+"å¹¾å€‹å­—");	//å›žå‚³æ•¸å€¼	
 };
 });
 	}
 
 
     
-		 private String fun1(){
+	
+
+		private String fun1(){
      		Random rnd = new Random();
-     		String s = null ;
-     		int v1 = rnd.nextInt(4)+1;
+     		String s  = null;
+     		int v1 = rnd.nextInt(7)+1;
      		switch(v1){
      		case 1:
-     			 s = "ÅS¿@·Ï­«¯óµÖµÖ¾ð¬MÁñ¤z¬h©Ø³ö¤@°|¸¨ªáµL«È¾K¤­§ó´Ý¤ë¦³Åa³ÚªÚºá·Q¹³±¡ÃøºÉ¬Gºk¯î²D¸ô¤w°g±¨±£Ã½ö|©¹¨ÓºD¨C¸gªù«Ñ¥çªø¼R";
+     			 s = "éœ²æ¿ƒç…™é‡è‰è‹è‹æ¨¹æ˜ é—Œå¹²æŸ³æ‹‚å ¤ä¸€é™¢è½èŠ±ç„¡å®¢é†‰äº”æ›´æ®˜æœˆæœ‰é¶¯å•¼èŠ³ç­µæƒ³åƒæƒ…é›£ç›¡æ•…æ¦­è’æ¶¼è·¯å·²è¿·æƒ†æ‚µç¾¸é©‚å¾€ä¾†æ…£æ¯ç¶“é–€å··äº¦é•·å˜¶";
      		break;
      		case 2:
-     			 s = "¬yæBÃ¾¤ë¤Uªe¶§¯ó¦â·s¦~µo«Ø³¹¯³¦a¥ß¬K¶Ç¤Ó¥vº~®cÃD¬W¾Ð¥P­¦ÂkÂE±ý«×¤dªù³·¨Í¤k·s²K¤­©]­»¦­±ß¯ò¶¯¤å¦üªÌ¬G¤H¤µ¤w½áªø·¨";
+     			 s = "æµæ¾Œè‡˜æœˆä¸‹æ²³é™½è‰è‰²æ–°å¹´ç™¼å»ºç« ç§¦åœ°ç«‹æ˜¥å‚³å¤ªå²æ¼¢å®®é¡ŒæŸ±æ†¶ä»™éƒŽæ­¸é´»æ¬²åº¦åƒé–€é›ªä¾å¥³æ–°æ·»äº”å¤œé¦™æ—©æ™šèé›„æ–‡ä¼¼è€…æ•…äººä»Šå·²è³¦é•·æ¥Š";
      		break;
      		case 3:
-     			 s = "³¥¦ÑÆX«e¦¿©¤¦^®ãªù¤£¥¿³v¦¿¶}º®¤Hºô¶°¼á¼æ¤U¸ë«È²îÀHªð·Ó¨Óªø¸ôÃö¤ß´d¼C»Õ¤ù¶³¦ó·N³Äµ^¥x¤ý®v¥¼³ø¦¬ªF°p«°Âö¬î¥Íµe¨¤«s";
+     			 s = "é‡Žè€ç±¬å‰æ±Ÿå²¸å›žæŸ´é–€ä¸æ­£é€æ±Ÿé–‹æ¼äººç¶²é›†æ¾„æ½­ä¸‹è³ˆå®¢èˆ¹éš¨è¿”ç…§ä¾†é•·è·¯é—œå¿ƒæ‚²åŠé–£ç‰‡é›²ä½•æ„å‚ç´å°çŽ‹å¸«æœªå ±æ”¶æ±éƒ¡åŸŽé—•ç§‹ç”Ÿç•«è§’å“€";
      		break;
      		case 4:
-     			 s = "¦è¸¾Äå®ç¤]¦Û¬õ³¥¤H¬ÛÃØº¡¸aÅ¢¼Æ¦^²Ó¼g·T¤´¯}¸UÁû¤Ã¶ê³Y³\¦P¾Ð¬Q½çªgªù¤U¬Ù°h´ÂÀº¥X¤j©ú®cª÷½L¥ÉºæµL®ø®§¦¹¤é¹Á·s¥ôÂà½´";
+     			 s = "è¥¿èœ€æ«»æ¡ƒä¹Ÿè‡ªç´…é‡Žäººç›¸è´ˆæ»¿ç­ ç± æ•¸å›žç´°å¯«æ„ä»ç ´è¬é¡†å‹»åœ“è¨è¨±åŒæ†¶æ˜¨è³œæ²¾é–€ä¸‹çœé€€æœæ“Žå‡ºå¤§æ˜Žå®®é‡‘ç›¤çŽ‰ç®¸ç„¡æ¶ˆæ¯æ­¤æ—¥å˜—æ–°ä»»è½‰è“¬";
+     		break;
+     		case 5:
+     			 s = "ç‡•å°ä¸€åŽ»å®¢å¿ƒæƒŠç¬³é¼“å–§å–§æ¼¢å°‡ç‡Ÿä¸‡é‡Œå¯’å…‰ç”Ÿç©é›ªä¸‰é‚Šæ›™è‰²å‹•å±æ—Œæ²™å ´çƒ½ç«ä¾µèƒ¡æœˆæµ·ç•”äº‘å±±æ“è–ŠåŸŽå°‘å°é›–éžæŠ•ç­†åè«–åŠŸé‚„æ¬²è«‹é•·çº“";
+     		break;
+     		case 6:
+     			 s = "æ¼¢æ–‡çš‡å¸æœ‰é«˜å°æ­¤æ—¥ç™»è‡¨æ›™è‰²é–‹ä¸‰æ™‰äº‘å±±çš†åŒ—å‘äºŒé™µé¢¨é›¨è‡ªæ±ä¾†é—œé–€ä»¤å°¹èª°èƒ½è­˜æ²³ä¸Šä»™ç¿åŽ»ä¸å›žä¸”æ¬²è¿‘å°‹å½­æ¾¤å®°é™¶ç„¶å…±é†‰èŠèŠ±æ¯";
+     		break;
+     		case 7:
+     			 s = "é³³å‡°å°ä¸Šé³³å‡°æ¸¸é³³åŽ»å°ç©ºæ±Ÿè‡ªæµå³å®®èŠ±è‰åŸ‹å¹½å¾‘æ™‰ä»£è¡£å† æˆå¤ä¸˜ä¸‰å±±åŠè½é’å¤©å¤–äºŒæ°´ä¸­åˆ†ç™½é·ºæ´²ç¸½ç‚ºæµ®äº‘èƒ½è”½æ—¥é•·å®‰ä¸è¦‹ä½¿äººæ„";
      		}
      		return s;
       }
@@ -204,17 +229,22 @@ public class MainFrame extends Frame  implements ActionListener{
 				int v2 = rnd.nextInt(4)+1;
 				switch(v2){
 				case 1:
-					s1 = "ForstudentsatoneelementaryschoolgoingtoclassmeanstakingbookspencilsandpassportsRtyuugesl";
+					s1 = "His breakthrough major title at the 2016 US Open paved the way for a streak which has yielded five more wins,including three this season,and catapulted him to world No1";
 					break;
 				case 2:
-					s1 = "JimmyKimmelandTrevorNoahmockedPresidentTrumpsdecisiontowithdrawfromtheParisClimateAccord";
+					s1 = "The medieval era took the model of masculinity back towards basic,chivalric,Christian values,before the likes of Byron and Brummell shattered these ideas with the rise of the dandy";
 					break;
 				case 3:
-					s1 = "TheadvertisementisamusicvideothatfeaturesarecreatedterroristattackandlyricsaskingRytIEgd";
+					s1 = "There cannot be one singular kind of Nigerian man or woman,there has to be room for other definitions that dont necessarily fit that opinion";
 					break;
 				case 4:
-					s1 = "WhenyouthinkofahackeryouprobablythinkaboutbasementdwellersinhoodiestypingDtehyjkQluljTuy";
+					s1 = "His amazing life has now become the subject of an international book,published by Bloomsbury and endorsed by King Abdullah II of Jordan and British adventurer Ranulph Fiennes";
 					break;
+				case 5:
+					 s1 = "Richard Bland,Save the Children national director of policy,advocacy and development,was most surprised by the country low ranking and its position between Bosnia and Russia";
+					 break;
+				case 6:
+					 s1 = "But while most nutritionists recommend whole wheat bread over white bread,one new study suggests that the type of bread that is best for you may have more to do with your own body than the bread itself";
 				}
 				return s1;
 			}
