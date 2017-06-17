@@ -126,25 +126,15 @@ public class MainFrame extends Frame {
 								int IT = 0;
 
 								for (int i = 0; i < v2.length; i++) { // 文字判斷
-
 									if (v1[i] != v2[i]) {
-										IT++;
-										
-										
-										lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
-										
-									}else{
-										lab4.setText("恭喜全對");	
-									}
+										IT++;																																																
+									}								
 								}
+								lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
 							}
-							if (v1.length < v2.length) {
-								lab4.setText("超過");
-								
-								}else if (v1.length > v2.length) {
-									lab4.setText(" ");
+							
 
-							}
+							
 						} else if (i == 0) {
 							tmr.cancel();
 							i = 60;
@@ -157,16 +147,10 @@ public class MainFrame extends Frame {
 							for (int i = 0; i < v2.length; i++) { // 文字判斷
 
 								if (v1[i] != v2[i]) {
-									IT++;
-									
-										
-									
-									lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
-								}else{
-								lab4.setText("恭喜全對");	
+									IT++;																																				
 								}
 							}
-							
+							lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
 						}
 						
 
