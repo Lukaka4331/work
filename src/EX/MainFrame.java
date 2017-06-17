@@ -11,13 +11,12 @@ import EX.GuessTimer.Listener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainFrame extends Frame  implements ActionListener{
+public class MainFrame extends Frame  {
 	private JButton b1=new JButton ("中文");
 	private JButton b2=new JButton ("英文");
 
 	private JButton b3=new JButton ("開始");
 	private JButton b4=new JButton ("重新開始");
-	private JButton b5=new JButton ("判斷");
 
 	private JLabel lab1=new JLabel  ("中英文打字系統",SwingConstants.CENTER);
 	private JLabel lab2=new JLabel  ("60",SwingConstants.CENTER);
@@ -80,7 +79,6 @@ public class MainFrame extends Frame  implements ActionListener{
          pn1.add(b4);
          pn3.add(lab3);
          pn3.add(lab4);
-         pn1.add(b5);
 
        
 
@@ -123,26 +121,41 @@ public class MainFrame extends Frame  implements ActionListener{
          
 		 b3.addActionListener(new ActionListener(){		 
 			public void actionPerformed(ActionEvent ae) {
-				//for(int i=60;i>=0;i--){ 
-				//	try { 
-					//每次停一秒鐘 
-					//Thread.sleep(1000); 						
-					//} catch (Exception e1) {} 	 									
-					//lab2.setText("倒數"+i+"秒"); 
-					//} 
+				
 				tf.setEnabled(true);
 
-				b3.setEnabled(false);		
+				b3.setEnabled(false);	
 				Timer tmr=new Timer();
 				tmr.schedule(new  TimerTask(){
-                int i=60;
+                int i=60;                		;
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						if(i>=0){
-							lab2.setText(Integer.toString(i--));
 						
-					}}}, 1000,1000);
+						if(i>0){
+							lab2.setText(Integer.toString(i--));
+						    b4.setEnabled(false);
+					}else if(i==0){
+						tmr.cancel();
+						i=60;
+						lab2.setText("0");						
+					    b4.setEnabled(true);					    
+					    tf.setEnabled(false);
+					    tf.setEnabled(false);//關按鈕
+						int IT = 0;
+						char[]v1 = (ta.getText()).toCharArray();//將文字拉入陣列
+						char[]v2 = (tf.getText()).toCharArray();
+						for(int i = 0;i<v2.length;i++){ //文字判斷
+							
+							if(v1[i]!=v2[i]){
+								IT++;
+							}
+						}	
+					    	lab4.setText("錯了"+(IT+(v1.length-v2.length))+"幾個字");	//回傳數值	
+				
+					};
+																																										
+						}}, 1000,1000);
 
 				b3.setEnabled(false);			
 
@@ -155,7 +168,7 @@ public class MainFrame extends Frame  implements ActionListener{
 		 });
 		 b4.addActionListener(new ActionListener(){		 
 				public void actionPerformed(ActionEvent ae) {
-					b3.setEnabled(true);
+					b3.setEnabled(true);				
 					lab4.setText(" ");
 					lab3.setText("目前還沒輸入");
 					tf.setEnabled(true);//開按鈕
@@ -176,25 +189,10 @@ public class MainFrame extends Frame  implements ActionListener{
 		 });
 				
     
+    }
     
     
     
-    b5.addActionListener(new ActionListener(){
-		public void actionPerformed(ActionEvent aw){
-		tf.setEnabled(false);//關按鈕
-		int IT = 0;
-		char[]v1 = (ta.getText()).toCharArray();//將文字拉入陣列
-		char[]v2 = (tf.getText()).toCharArray();
-		for(int i = 0;i<v2.length;i++){ //文字判斷
-			
-			if(v1[i]!=v2[i]){
-				IT++;
-			}
-		}	
-	    	lab4.setText("錯了"+(IT+(v1.length-v2.length))+"幾個字");	//回傳數值	
-};
-});
-	}
 
 
     
@@ -256,11 +254,7 @@ public class MainFrame extends Frame  implements ActionListener{
 				return s1;
 			}
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		
 		 
 		 
 		 
