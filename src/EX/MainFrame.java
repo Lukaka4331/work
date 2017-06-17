@@ -127,7 +127,7 @@ public class MainFrame extends Frame  {
 				b3.setEnabled(false);	
 				Timer tmr=new Timer();
 				tmr.schedule(new  TimerTask(){
-                int i=60;                		;
+                int i=60;                		
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
