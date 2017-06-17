@@ -106,7 +106,7 @@ public class MainFrame extends Frame {
 				lab3.setText("算算你打了" + tfCount + "個字");
 				Timer tmr = new Timer();
 				tmr.schedule(new TimerTask() {
-					int i = 10;
+					int i = 60;
 
 					@Override
 					public void run() {
