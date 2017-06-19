@@ -105,14 +105,16 @@ public class MainFrame extends Frame {
 				tfCount = 0;
 				lab3.setText("算算你打了" + tfCount + "個字");
 				Timer tmr = new Timer();
+				
 				tmr.schedule(new TimerTask() {
 					int i = 60;
-
+ 
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
 						char[] v1 = (ta.getText()).toCharArray();// 將文字拉入陣列
 						char[] v2 = (tf.getText()).toCharArray();
+						lab4.setText("這篇有" + v1.length+ "個字"); 
 						if (i > 0) {
 							lab2.setText(Integer.toString(i--));
 							b4.setEnabled(false);
@@ -124,13 +126,14 @@ public class MainFrame extends Frame {
 								tf.setEnabled(false);
 								tf.setEnabled(false);// 關按鈕
 								int IT = 0;
-
+//								lab4.setText("這篇有" + v1.length+ "個字");
 								for (int i = 0; i < v2.length; i++) { // 文字判斷
 									if (v1[i] != v2[i]) {
 										IT++;																																																
 									}								
 								}
-								lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
+								JOptionPane.showMessageDialog(null, ("錯了" + (IT + (v1.length - v2.length)) + "幾個字"));
+								 
 							}
 							
 
@@ -150,7 +153,8 @@ public class MainFrame extends Frame {
 									IT++;																																				
 								}
 							}
-							lab4.setText("錯了" + (IT + (v1.length - v2.length)) + "幾個字"); // 回傳數值
+							JOptionPane.showMessageDialog(null, ("錯了" + (IT + (v1.length - v2.length)) + "幾個字"));// 回傳數值
+							
 						}
 						
 
