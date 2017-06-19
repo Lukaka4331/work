@@ -58,12 +58,15 @@ public class MainFrame extends Frame {
 		lab4.setFont(ss);
 		lab2.setFont(ss);
 		tf.setFont(ss);
-
-		lab1.setBackground(Color.PINK);
-		lab1.setOpaque(true);
-		ta.setBackground(Color.CYAN);
+		this.setBackground(Color.gray);
+		ta.setBackground(Color.gray);
+		tf.setBackground(Color.gray);
+		lab1.setBackground(Color.black);
+		ta.setBackground(Color.gray);
+		
+		lab1.setOpaque(true);		
 		ta.setOpaque(true);// 透明度
-		ta.setLineWrap(true);// 激活自??行功能
+		ta.setLineWrap(true);// 激活自動換行功能
 		pn1.setLayout(new GridLayout(1, 0, 0, 0));
 		pn2.setLayout(new GridLayout(2, 1, 0, 0));
 		pn3.setLayout(new GridLayout(2, 1, 1, 0));
@@ -86,7 +89,12 @@ public class MainFrame extends Frame {
 		this.add(pn3, BorderLayout.SOUTH);
 		tf.setEnabled(false);
 		ta.setEditable(false);
-		lab4.setForeground(Color.red);
+		lab1.setForeground(Color.gray);
+		lab2.setForeground(Color.white);
+		lab3.setForeground(Color.white);
+		lab4.setForeground(Color.BLACK);
+		ta.setForeground(Color.white);
+		tf.setForeground(Color.black);
 		comebox.addItemListener(new ItemListener() {
 
 			@Override
@@ -114,7 +122,7 @@ public class MainFrame extends Frame {
 						// TODO Auto-generated method stub
 						char[] v1 = (ta.getText()).toCharArray();// 將文字拉入陣列
 						char[] v2 = (tf.getText()).toCharArray();
-						lab4.setText("這篇有" + v1.length+ "個字"); 
+						lab4.setText("這篇共有" + v1.length+ "個字"); 
 						if (i > 0) {
 							lab2.setText(Integer.toString(i--));
 							b4.setEnabled(false);
